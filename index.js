@@ -5,8 +5,10 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 const jsonBodyMiddleware = express.json();
-app.use(cors());
 app.use(jsonBodyMiddleware);
+
+app.use(cors());
+app.options('*', cors());
 
 const db = {
     products: [
