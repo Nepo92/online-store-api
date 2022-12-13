@@ -1,11 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 const app = express();
 
 const jsonBodyMiddleware = express.json();
-
-app.use(jsonBodyMiddleware)
+app.use(cors());
+app.use(jsonBodyMiddleware);
 
 const db = {
     products: [
