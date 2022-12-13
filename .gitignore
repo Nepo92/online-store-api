@@ -2,3 +2,4 @@
 .env
 app.js
 index.html
+.vercel
