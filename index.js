@@ -29,7 +29,7 @@ async function calcBasket() {
 }
 
 app.get('/', (req, res) => {
-    res.send(`Example app listening on port ${port}`);
+    res.send(`Example app listening on port ${port}, ${db.products}`);
 })
 
 app.get('/products', (req, res) => {
