@@ -19,7 +19,7 @@ const db = {
 }
 
 async function calcBasket() {
-    db.basket.value = await db.basket.contains.reduce((init, current) => init + current.price, 0);
+    db.basket.price = await db.basket.contains.reduce((init, current) => init + current.price, 0);
 
     db.basket.products = await db.basket.contains.length;
 }
