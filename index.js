@@ -29,15 +29,20 @@ app.get('/', (req, res) => {
 })
 
 app.get('/products', (req, res) => {
-    console.log(db.products)
     try {
-        const findedProducts = db.products.filter((el) => {
-            return el.name.includes(req.query.name);
-        });
+        let products = db.products;
 
-        const current = req.query.name ? findedProducts : db.products;
+        if (req.query.title) {
+            products = db.products.filter((el) => {
+                return el.title.includes(req.query.title);
+            });
+        } else if (req.query.category) {
+            products = db.products.filter((el) => {
+                return el.category.toLowerCase() === req.query.category.toLowerCase();
+            });
+        }
 
-        res.json(current);
+        res.json(products);
     } catch(e) {
         res.sendStatus(400);
     }
