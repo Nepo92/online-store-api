@@ -3,9 +3,9 @@ import cors from 'cors';
 const port = process.env.PORT || 3000;
 
 const app = express();
-const cors = cors();
+const corsPolicy = cors();
 
-app.use(cors())
+app.use(corsPolicy())
 
 const jsonBodyMiddleware = express.json();
 app.use(jsonBodyMiddleware);
