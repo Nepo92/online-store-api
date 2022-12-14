@@ -4,9 +4,6 @@
   "description": "",
   "main": "api/index.js",
   "type": "module",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "dev": "npx nodemon index.js",
     "start": "node index.js"
