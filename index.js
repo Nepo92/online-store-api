@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import {products} from './storage.js';
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -9,10 +10,7 @@ const jsonBodyMiddleware = express.json();
 app.use(jsonBodyMiddleware);
 
 const db = {
-    products: [
-        {name: 'Кросы', id: 1, price: 10},
-        {name: 'футболка', id: 2, price: 20},
-    ],
+    products: [...products.sort(() => Math.random() - 0.5)],
     basket: {
         products: 0,
         price: 0,
@@ -27,10 +25,11 @@ async function calcBasket() {
 }
 
 app.get('/', (req, res) => {
-    res.send(`Example app listening on port ${port}, ${db.products}`);
+    res.send(`Hello !`);
 })
 
 app.get('/products', (req, res) => {
+    console.log(db.products)
     try {
         const findedProducts = db.products.filter((el) => {
             return el.name.includes(req.query.name);
